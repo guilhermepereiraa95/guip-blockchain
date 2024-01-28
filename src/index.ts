@@ -4,6 +4,7 @@ import express, { json } from "express";
 import cors from 'cors';
 import Blockchain from "./blockchain/blockchain";
 
+const PORT = 3000;
 const app = express();
 
 app.use(cors());
@@ -20,9 +21,7 @@ app.post('/api/mine', (req, res) => {
     blockchain.addBlock({data});
 
     res.redirect('/api/blocks');
-})
-
-const PORT = 3000;
+});
 
 app.listen(PORT, () => console.log(`listening at localhost/${PORT}`));
 
