@@ -42,10 +42,10 @@ export class Block {
             difficulty = this.adjustDifficulty(lastBlock, timestamp);
 
             hash = cryptoHash({timestamp, lastHash, data, difficulty, nonce});
-
+            console.log({timestamp, lastHash, data, difficulty, nonce});
         } while (hexToBinary(hash).substring(0, difficulty));
 
-        return new this(data, hash, nonce, difficulty, timestamp, lastHash);
+        return new this(data, hash, nonce, difficulty, timestamp, hash);
     }
 
     static adjustDifficulty(originalBlock: any, timestamp: any) {
